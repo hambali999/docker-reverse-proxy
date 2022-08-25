@@ -44,10 +44,10 @@ echo -e "#To load config files from a customised dir. \nIncludeOptional /usr/loc
 #mkdir for logs - custom directory
 mkdir -p /usr/local/apache2/bin/apachectl/logs
 
-#move /var/log/httpd
+#move /var/log/httpd files to the configured custom dir 
 mv /var/log/httpd /usr/local/apache2/bin/apachectl/logs
 
-#update the symlinks
+#update the symlinks to the custom dir we defined
 ln -s /etc/httpd/logs /usr/local/apache2/bin/apachectl/logs
 
 #system restart commands below
@@ -55,5 +55,6 @@ systemctl restart httpd
 systemctl enable httpd
 firewall-cmd --permanent --add-service=http
 firewall-cmd --reload
+
 #To allow apache to make network connections
 setsebool -P httpd_can_network_connect on
