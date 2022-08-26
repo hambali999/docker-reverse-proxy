@@ -56,5 +56,6 @@ systemctl enable httpd
 firewall-cmd --permanent --add-service=http
 firewall-cmd --reload
 
+
 #To allow apache to make network connections
 setsebool -P httpd_can_network_connect on
